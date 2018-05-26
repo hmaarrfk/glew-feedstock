@@ -1,6 +1,6 @@
 #!/bin/bash
 cd build
-cmake -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX} ./cmake
+cmake -DCMAKE_INSTALL_PREFIX:PATH="${PREFIX}" ./cmake
 make -j${CPU_COUNT}
 make install
 
