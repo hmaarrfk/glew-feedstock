@@ -21,6 +21,7 @@ requirements:
   build:
     - {{ compiler("c") }}
     - cmake
+    - pkg-config           # [unix]
 
 # Tests require visual context not present on CIs
 test:
