@@ -1,7 +1,7 @@
 #!/bin/bash
 cd build
 cmake -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX} ./cmake
-make -j4
+make -j${CPU_COUNT}
 make install
 
 # glew installs to /lib64 in some occasions, but conda only uses /lib and
