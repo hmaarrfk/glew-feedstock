@@ -12,33 +12,22 @@ source:
   url: {{ dev_url }}/releases/download/{{ name }}-{{ version }}/{{ name }}-{{ version }}.zip
   sha256: {{ sha256 }}
   patches:
-    - CMakeLists.patch  # [win and (py27 or py34)]
+    - CMakeLists.patch  # [win and vc<14]
 
 build:
   number: 0
-  features:
-    - vc9   # [win and py27]
-    - vc10  # [win and py34]
-    - vc14  # [win and py35]
 
 requirements:
   build:
-    - python  # [win]
-    - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py35]
-    - toolchain
+    - {{ compiler("c") }}
     - cmake
-  run:
-    - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py35]
+    - pkg-config           # [unix]
 
 # Tests require visual context not present on CIs
 test:
   requires:
+    - {{ compiler("c") }}
     - cmake
-    - toolchain
   commands:
     - test -f $PREFIX/include/GL/glew.h  # [unix]
     - if not exist %LIBRARY_INC%\GL\glew.h exit 1  # [win]
