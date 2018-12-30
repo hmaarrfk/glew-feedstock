@@ -22,11 +22,11 @@ requirements:
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
     - cmake
-    - pkg-config           # [unix]
+    - pkg-config                     # [unix]
   host:
-    - xorg-libx11          # [linux]
+    - xorg-libx11                    # [linux]
   run:
-    - xorg-libx11          # [linux]
+    - xorg-libx11                    # [linux]
 
 # Tests require visual context not present on CIs
 test:
