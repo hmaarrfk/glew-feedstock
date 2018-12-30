@@ -35,7 +35,7 @@ test:
     - {{ compiler("cxx") }}
     - cmake
   commands:
-    - test -f $PREFIX/include/GL/glew.h  # [unix]
+    - test -f $PREFIX/include/GL/glew.h            # [unix]
     - if not exist %LIBRARY_INC%\GL\glew.h exit 1  # [win]
 
 about:
