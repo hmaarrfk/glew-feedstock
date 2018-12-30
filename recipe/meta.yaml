@@ -23,6 +23,8 @@ requirements:
     - {{ compiler("cxx") }}
     - cmake
     - pkg-config           # [unix]
+  host:
+    - xorg-libx11          # [unix]
 
 # Tests require visual context not present on CIs
 test:
