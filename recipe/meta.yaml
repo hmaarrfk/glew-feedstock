@@ -23,6 +23,8 @@ requirements:
     - {{ compiler("cxx") }}
     - cmake
     - pkg-config                     # [unix]
+    - {{ cdt('mesa-libgl-devel') }}  # [linux]
+    - {{ cdt('mesa-dri-drivers') }}  # [linux]
   host:
     - xorg-libx11                    # [linux]
   run:
