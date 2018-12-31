@@ -15,14 +15,29 @@ source:
     - CMakeLists.patch  # [win and vc<14]
 
 build:
-  number: 1
+  number: 1002
 
 requirements:
   build:
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
     - cmake
-    - pkg-config           # [unix]
+    - pkg-config                     # [unix]
+    - {{ cdt('libselinux') }}        # [linux]
+    - {{ cdt('libxcb') }}            # [linux]
+    - {{ cdt('libxdamage') }}        # [linux]
+    - {{ cdt('libxfixes') }}         # [linux]
+    - {{ cdt('libxxf86vm') }}        # [linux]
+    - {{ cdt('mesa-libgl-devel') }}  # [linux]
+    - {{ cdt('mesa-dri-drivers') }}  # [linux]
+  host:
+    - libglu                         # [linux]
+    - xorg-libx11                    # [linux]
+    - xorg-libxext                   # [linux]
+  run:
+    - libglu                         # [linux]
+    - xorg-libx11                    # [linux]
+    - xorg-libxext                   # [linux]
 
 # Tests require visual context not present on CIs
 test:
@@ -30,8 +45,15 @@ test:
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
     - cmake
+    - {{ cdt('libselinux') }}        # [linux]
+    - {{ cdt('libxcb') }}            # [linux]
+    - {{ cdt('libxdamage') }}        # [linux]
+    - {{ cdt('libxfixes') }}         # [linux]
+    - {{ cdt('libxxf86vm') }}        # [linux]
+    - {{ cdt('mesa-libgl-devel') }}  # [linux]
+    - {{ cdt('mesa-dri-drivers') }}  # [linux]
   commands:
-    - test -f $PREFIX/include/GL/glew.h  # [unix]
+    - test -f $PREFIX/include/GL/glew.h            # [unix]
     - if not exist %LIBRARY_INC%\GL\glew.h exit 1  # [win]
 
 about:
