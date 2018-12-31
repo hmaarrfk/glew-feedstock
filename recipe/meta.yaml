@@ -26,8 +26,10 @@ requirements:
     - {{ cdt('mesa-libgl-devel') }}  # [linux]
     - {{ cdt('mesa-dri-drivers') }}  # [linux]
   host:
+    - libglu                         # [linux]
     - xorg-libx11                    # [linux]
   run:
+    - libglu                         # [linux]
     - xorg-libx11                    # [linux]
 
 # Tests require visual context not present on CIs
