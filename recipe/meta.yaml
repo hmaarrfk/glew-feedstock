@@ -15,7 +15,9 @@ source:
     - CMakeLists.patch  # [win and vc<14]
 
 build:
-  number: 1002
+  number: 1003
+  run_exports:
+    - {{ pin_subpackage('glew', max_pin='x.x') }}
 
 requirements:
   build:
